@@ -23,6 +23,9 @@ var generation = 0;
 var obstaclesCount = 5;
 var obstacles = [];
 
+/**
+ * This is the setup function that is called at the beginning of the sketch
+ */
 function setup() {
   createCanvas(750, 700);
   populations[0] = new Population(populationCount);
@@ -38,14 +41,15 @@ function setup() {
   }
 }
 
+/**
+ * This is the draw function that is called every time the sketch refreshes
+ */
 function draw() {
   background(0);
   let newPops = [];
   for (let popIndex = populations.length - 1; popIndex >= 0; --popIndex) {
     let population = populations[popIndex];
     population.run();
-    // Displays count to window
-
     lifeP.html(
       `Generation: ${generation} Time: ${count % lifespan}/${lifespan} Successes: ${population.successCount()}/${populationCount}`
     );
